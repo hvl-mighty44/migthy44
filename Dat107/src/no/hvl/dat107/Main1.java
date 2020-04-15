@@ -10,7 +10,9 @@ public class Main1 {
     	AnsattDAO AnsattDAO = new AnsattDAO();
     	
     	
-    	AvdelingDAO.leggeTilNyAvdeling("bla", AnsattDAO.finnAnsattMedId(6));
+    	//AnsattDAO.oppdaterStilling(1, "Test");
+    	
+    	//AvdelingDAO.leggeTilNyAvdeling("bla", AnsattDAO.finnAnsattMedId(6));
     	
     	
     	//Ansatt ansatt = AnsattDAO.finnAnsattMedBrukernavn("nn");
