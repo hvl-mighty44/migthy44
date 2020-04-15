@@ -1,6 +1,9 @@
 package no.hvl.dat107;
 
 import java.math.BigDecimal;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -63,7 +66,16 @@ public void skrivUtAnsatte() {
 		try {
 			TypedQuery<Ansatt> query = em.createQuery("SELECT t FROM Ansatt t ", Ansatt.class);
 			
-			System.out.println(query.getResultList());
+			List<Ansatt> resultat = query.getResultList();
+			
+			Iterator<Ansatt> iterator = resultat.iterator();
+			
+			while (iterator.hasNext()) {
+				System.out.println(iterator.next().fullAnsattUtskrift());
+
+				}
+			
+		//	System.out.println(query.getResultList());
 
 		} catch (NoResultException e) {
             // e.printStackTrace();
@@ -246,7 +258,6 @@ public void oppdaterAvdeling(int id, Avdeling avdeling) {
         
         if (k != null && !AvdelingDAO.erSjef(k)) {
         	
-        	// Dette gjorde vi sist gang, altså antar at karakteren ikke finnes.
         	
         	
         	k.setAvdeling(avdeling);

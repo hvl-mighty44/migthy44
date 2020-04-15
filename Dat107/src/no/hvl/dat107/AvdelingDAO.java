@@ -51,7 +51,8 @@ public class AvdelingDAO {
 				// Dette gjorde vi sist gang, altså antar at karakteren ikke finnes.
 
 				avdeling.setSjef(navn);
-
+				sjef.setAvdeling(avdeling);
+				em.merge(sjef);
 				em.merge(avdeling);
 
 			} else {

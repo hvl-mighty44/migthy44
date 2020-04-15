@@ -36,6 +36,14 @@ public class Ansatt {
 	
 	public Ansatt() {}
 	
+	public Ansatt(String brukernavn, String fornavn, String etternavn, Avdeling avdeling) {
+		this.brukernavn = brukernavn;
+		this.fornavn = fornavn;
+		this.etternavn = etternavn;
+		ansettelse = LocalDate.now();
+		this.avdeling = avdeling;
+	}
+	
 	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansettelse, String stillling, BigDecimal lonn, Avdeling avdeling, String prosjekter) {
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
@@ -62,6 +70,16 @@ public class Ansatt {
                 + " " + "\n";
 
     }
+	
+	
+	public String fullAnsattUtskrift() {
+        return "Ansatt ID : " + this.getId() + "\n" +  "Fornavn : "
+                + this.getFornavn() + "\n" + "Etternavn : " + this.getEtternavn() + "\n" + "Ansettelses Tidspunkt : "
+                + this.getAnsettelse() + "\n" + "Stilling : " + this.getStillling() + "\n" + "Lønn : " + this.getLonn() + " Kr"
+                + "\n" + "Avdeling : " + this.getAvdeling().getAvdeling_navn() + "\n" + "Prosjekter : " + this.getProsjekter() + "\n";
+
+    }
+	
 	
 	public Integer getId() {
 		return ansatt_id;

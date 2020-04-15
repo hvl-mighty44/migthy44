@@ -11,54 +11,44 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
-@Table(schema ="ovelse3_jpa")
+@Table(schema = "ovelse3_jpa")
 public class Avdeling {
-	
-	
+
 	@Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int avdeling_id;
 	private String avdeling_navn;
 	private String sjef;
-	
-	
+
 	@OneToMany(mappedBy = "avdeling", fetch = FetchType.EAGER)
 	private List<Ansatt> ansatte;
-	
-	
-	
-	  public Avdeling() {}
-	  
-	  public Avdeling(String avdeling_navn) {
-	  
-	  this.avdeling_navn = avdeling_navn; 
-	  sjef = null;
-	  
-	  }
-	 
-	
-	  
-	 
-	  public void skrivUtAnsattListe() {
 
-	        Iterator<Ansatt> iterator = ansatte.iterator();
-	        System.out.println("Avdeling : " + avdeling_navn);
-	        System.out.println("Sjef : " + sjef + "\n");
-	        while (iterator.hasNext()) {
-	            System.out.println(iterator.next().ansattTabellUtskrift());
+	public Avdeling() {
+	}
 
-	        }
+	public Avdeling(String avdeling_navn) {
 
-	    }
-	  
+		this.avdeling_navn = avdeling_navn;
+		sjef = null;
+
+	}
+
+	public void skrivUtAnsattListe() {
+
+		Iterator<Ansatt> iterator = ansatte.iterator();
+		System.out.println("Avdeling : " + avdeling_navn);
+		System.out.println("Sjef : " + sjef + "\n");
+		while (iterator.hasNext()) {
+		System.out.println(iterator.next().ansattTabellUtskrift());
+
+		}
+
+	}
 
 	public int getAvdeling_id() {
 		return avdeling_id;
 	}
-
 
 	public String getAvdeling_navn() {
 		return avdeling_navn;
@@ -80,9 +70,5 @@ public class Avdeling {
 	public String toString() {
 		return "Avdeling [avdeling_id=" + avdeling_id + ", avdeling_navn=" + avdeling_navn + ", sjef=" + sjef + "]";
 	}
-	
-	
-	
-	
 
 }
