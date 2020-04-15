@@ -30,7 +30,7 @@ CREATE TABLE ansatt
     stilling VARCHAR(30),
     lonn DECIMAL(10,2),
     prosjekter VARCHAR(30),
-    avdeling_id INTEGER,
+    avdeling_id INTEGER NOT NULL,
     CONSTRAINT ansatt_pk PRIMARY KEY (ansatt_id),
     CONSTRAINT karUnique UNIQUE (brukernavn),
     CONSTRAINT AvdelingFK FOREIGN KEY (avdeling_id) 

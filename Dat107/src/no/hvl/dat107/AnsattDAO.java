@@ -1,5 +1,6 @@
 package no.hvl.dat107;
 
+import java.math.BigDecimal;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -119,7 +120,7 @@ public void oppdaterStilling(int id, String stilling) {
 }
 
 
-public void oppdaterStillingOgLonn(int id, String stilling, int lonn) {
+public void oppdaterStillingOgLonn(int id, String stilling, BigDecimal lonn) {
 	
 	EntityManager em = emf.createEntityManager();
     EntityTransaction tx = em.getTransaction();
@@ -164,7 +165,7 @@ public void oppdaterStillingOgLonn(int id, String stilling, int lonn) {
 
 
 
-public void oppdaterLonn(int id, int lonn) {
+public void oppdaterLonn(int id, BigDecimal lonn) {
 	
 	EntityManager em = emf.createEntityManager();
     EntityTransaction tx = em.getTransaction();

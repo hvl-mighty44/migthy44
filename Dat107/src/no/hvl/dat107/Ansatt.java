@@ -1,5 +1,6 @@
 package no.hvl.dat107;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
@@ -9,10 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(schema = "ovelse3_jpa")
@@ -26,7 +26,7 @@ public class Ansatt {
 	private String etternavn;
 	private java.time.LocalDate ansettelse;
 	private String stilling;
-	private int lonn; //Endre format
+	private BigDecimal lonn; //Endre format
 	
 	@ManyToOne
 	@JoinColumn(name = "avdeling_id", referencedColumnName = "avdeling_id")
@@ -36,7 +36,7 @@ public class Ansatt {
 	
 	public Ansatt() {}
 	
-	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansettelse, String stillling, int lonn, Avdeling avdeling, String prosjekter) {
+	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansettelse, String stillling, BigDecimal lonn, Avdeling avdeling, String prosjekter) {
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
@@ -54,6 +54,15 @@ public class Ansatt {
 				+ avdeling + ", prosjekter=" + prosjekter + "]\n";
 	}
 
+	
+	
+	public String ansattTabellUtskrift() {
+
+        return "Ansatt ID : " + this.getId() + "\n" + "Navn : " + this.getFulltNavn() + "\n" + "Stilling : " + this.getStillling()
+                + " " + "\n";
+
+    }
+	
 	public Integer getId() {
 		return ansatt_id;
 	}
@@ -106,11 +115,11 @@ public class Ansatt {
 		this.stilling = stillling;
 	}
 
-	public int getLonn() {
+	public BigDecimal getLonn() {
 		return lonn;
 	}
 
-	public void setLonn(int lonn) {
+	public void setLonn(BigDecimal lonn) {
 		this.lonn = lonn;
 	}
 

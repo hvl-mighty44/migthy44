@@ -1,5 +1,6 @@
 package no.hvl.dat107;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -39,7 +39,21 @@ public class Avdeling {
 	  
 	  }
 	 
+	
+	  
 	 
+	  public void skrivUtAnsattListe() {
+
+	        Iterator<Ansatt> iterator = ansatte.iterator();
+	        System.out.println("Avdeling : " + avdeling_navn);
+	        System.out.println("Sjef : " + sjef + "\n");
+	        while (iterator.hasNext()) {
+	            System.out.println(iterator.next().ansattTabellUtskrift());
+
+	        }
+
+	    }
+	  
 
 	public int getAvdeling_id() {
 		return avdeling_id;

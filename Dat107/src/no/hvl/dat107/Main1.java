@@ -1,6 +1,6 @@
 package no.hvl.dat107;
 
-import java.time.LocalDate;
+
 
 public class Main1 {
 
@@ -9,6 +9,13 @@ public class Main1 {
     	AvdelingDAO AvdelingDAO = new AvdelingDAO();
     	AnsattDAO AnsattDAO = new AnsattDAO();
     	
+    	
+    	Avdeling avdeling = AvdelingDAO.finnAvdelingMedId(1);
+    	
+    	avdeling.skrivUtAnsattListe();
+    	
+    	
+    	//AnsattDAO.oppdaterLonn(1, BigDecimal.valueOf(10,00));
     	
     	//AnsattDAO.oppdaterStilling(1, "Test");
     	
