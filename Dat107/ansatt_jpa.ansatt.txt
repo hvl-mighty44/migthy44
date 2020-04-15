@@ -1,0 +1,67 @@
+-- Skript for å opprette databasen og legge inn litt data
+    -- Skjema = ansatt_jpa
+        -- Tabell(er) = ansatt 
+
+-- MERK!!! DROP SCHEMA ... CASCADE sletter alt !!!
+DROP SCHEMA IF EXISTS ovelse3_jpa CASCADE;
+
+CREATE SCHEMA ovelse3_jpa;
+SET search_path TO ovelse3_jpa;
+    
+-- Ikke nødvendig å slette tabellen(e) siden vi har tomt skjema, men ...
+-- DROP TABLE person;
+
+
+CREATE TABLE avdeling
+(
+    avdeling_id SERIAL,
+    avdeling_navn VARCHAR(30),
+    sjef VARCHAR(30),
+    CONSTRAINT avdeling_pk PRIMARY KEY (avdeling_id)
+);
+
+CREATE TABLE ansatt
+(
+    ansatt_id SERIAL,
+    brukernavn VARCHAR(4),
+    fornavn VARCHAR(30) NOT NULL,
+    etternavn VARCHAR(30) NOT NULL,
+    ansettelse DATE,
+    stilling VARCHAR(30),
+    lonn DECIMAL(10,2),
+    prosjekter VARCHAR(30),
+    avdeling_id INTEGER,
+    CONSTRAINT ansatt_pk PRIMARY KEY (ansatt_id),
+    CONSTRAINT karUnique UNIQUE (brukernavn),
+    CONSTRAINT AvdelingFK FOREIGN KEY (avdeling_id) 
+		REFERENCES avdeling(avdeling_id)
+);
+
+
+INSERT INTO
+  avdeling(avdeling_navn)
+VALUES
+    ('Kontor'), ('Renhold'), ('Transport'),('Lager');
+
+
+INSERT INTO
+  ansatt(brukernavn, fornavn, etternavn, ansettelse,
+  stilling, lonn, prosjekter, avdeling_id)
+VALUES
+    ('fv', 'Fredrik', 'Valset', '2020-03-10', 'Vaktmester',
+     200000,'ProsjektRenhold',2), ('on', 'Ole', 'Nordmann', '2018-09-18', 'Sjåfør',
+     200000,'ProsjektTransport',3),('pb', 'Per', 'Blomberg', '2020-09-28', 'Kontormedarbeider',
+     500000,'ProsjektKontor',1),('nn', 'Nils', 'Nilson', '2018-09-18', 'Sjåfør',
+     200000, 'ProsjektTransport',3),('na', 'Nora', 'Anneberg', '2018-09-18', 'Lagermedarbeider',
+     400000,'ProsjektLager',4),('rb', 'Ronny', 'Bengtson', '2015-03-25', 'Kontorsjef',
+     500000,'ProsjektKontor',1),('bh', 'Benny', 'Henriksen', '2017-10-08', 'Renholdsjef',
+     600000,'ProsjektRenhold',2),('ps', 'Pia', 'Sørensen', '2018-02-08', 'Transportsjef',
+     500000,'ProsjektTransport',3),('ee', 'Elise', 'Elingson', '2011-09-18', 'Lagersjef',
+     900000,'ProsjektLager',4),('ks', 'Kari', 'Solberg', '2019-04-10', 'Kontormedarbeider',
+     700000,'ProsjektKontor',1);
+
+
+
+
+
+
