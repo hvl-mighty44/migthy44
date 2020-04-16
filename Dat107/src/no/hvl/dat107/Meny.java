@@ -21,10 +21,14 @@ public class Meny {
 			System.out.println("Trykk [1] for å søke etter ansatt");
 			System.out.println("Trykk [2] for å skrive ut alle ansatte");
 			System.out.println("Trykk [3] for å oppdatere en ansatt");
-			System.out.println("Trykk [4] for å legge til en ansatt");
+			System.out.println("Trykk [4] for å bytte avdeling");
+			System.out.println("Trykk [5] for å legge til en ansatt");
+			System.out.println("Trykk [6] for å søke etter en avdeling");
+			System.out.println("Trykk [7] for å legge inn en ny avdeling");
 			System.out.println("Trykk [0] for å avslutte");
 			System.out.println(skille);
-
+			
+			
 			svar = leser.nextInt();
 
 			
@@ -90,7 +94,7 @@ public class Meny {
 						AnsattDAO.oppdaterLonn(n, BigDecimal.valueOf(lonn));
 						System.out.println("Oppdatert");
 						
-					} else if(id3 == 3) {
+					} else if(id3 == 4) {
 						System.out.println("Skriv inn id til den ansatte du vil endre stilling til");
 						n = leser.nextInt();
 						System.out.println("Skriv inn den nye stillingen");
@@ -102,7 +106,7 @@ public class Meny {
 						System.out.println("Oppdatert");
 						
 					} 
-				} else if(svar == 4) {
+				} else if(svar == 5) {
 					
 					System.out.println("Skriv inn brukernavn");
 					String brukernavn = leser.next() + leser.nextLine();
@@ -127,6 +131,39 @@ public class Meny {
 					
 					System.out.println("Oppdatert");
 					
+					
+				} else if(svar == 6) {
+					
+					System.out.println("Skriv inn avdelings ID");
+					int avd = leser.nextInt();
+					
+					
+					AvdelingDAO.finnAvdelingMedId(avd).skrivUtAnsattListe();
+					
+				}else if(svar == 4) {
+					
+					System.out.println("Skriv inn ansatt ID");
+					int id4 = leser.nextInt();
+					System.out.println("Skriv inn det nye avdelings nummeret");
+					int avd4 = leser.nextInt();
+					
+					Ansatt ansatt = AnsattDAO.finnAnsattMedId(id4);
+					
+					AnsattDAO.oppdaterAvdeling(id4, AvdelingDAO.finnAvdelingMedId(avd4));
+					
+					if(!AvdelingDAO.erSjef(ansatt)){
+					System.out.println("Oppdatert");
+					}
+					
+				} else if(svar == 7) {
+					
+					System.out.println("Skriv inn det nye avdelings navnet");
+					String avd7 = leser.next() + leser.nextLine();
+					System.out.println("Skriv inn ID til den nye sjefen");
+					int id7 = leser.nextInt();
+					
+					AvdelingDAO.leggeTilNyAvdeling(avd7, AnsattDAO.finnAnsattMedId(id7));
+					System.out.println("Oppdatert");
 					
 				}
 				 
