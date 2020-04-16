@@ -48,17 +48,16 @@ INSERT INTO
   ansatt(brukernavn, fornavn, etternavn, ansettelse,
   stilling, lonn, prosjekter, avdeling_id)
 VALUES
-    ('fv', 'Fredrik', 'Valset', '2020-03-10', 'Vaktmester',
-     200000,'ProsjektRenhold',2), ('on', 'Ole', 'Nordmann', '2018-09-18', 'Sjåfør',
-     200000,'ProsjektTransport',3),('pb', 'Per', 'Blomberg', '2020-09-28', 'Kontormedarbeider',
-     500000,'ProsjektKontor',1),('nn', 'Nils', 'Nilson', '2018-09-18', 'Sjåfør',
-     200000, 'ProsjektTransport',3),('na', 'Nora', 'Anneberg', '2018-09-18', 'Lagermedarbeider',
-     400000,'ProsjektLager',4),('rb', 'Ronny', 'Bengtson', '2015-03-25', 'Kontorsjef',
-     500000,'ProsjektKontor',1),('bh', 'Benny', 'Henriksen', '2017-10-08', 'Renholdsjef',
-     600000,'ProsjektRenhold',2),('ps', 'Pia', 'Sørensen', '2018-02-08', 'Transportsjef',
-     500000,'ProsjektTransport',3),('ee', 'Elise', 'Elingson', '2011-09-18', 'Lagersjef',
-     900000,'ProsjektLager',4),('ks', 'Kari', 'Solberg', '2019-04-10', 'Kontormedarbeider',
-     700000,'ProsjektKontor',1);
+    ('fv', 'Fredrik', 'Valset', '2020-03-10', 'Medarbeider', 200000,'ProsjektRenhold',2), 
+    ('on', 'Ole', 'Nordmann', '2018-09-18', 'Medarbeider', 600000,'ProsjektTransport',3),
+    ('pb', 'Pål', 'Blomberg', '2020-09-28', 'Medarbeider', 900000,'ProsjektKontor',1),
+    ('nn', 'Nils', 'Nilson', '2018-09-18', 'Medarbeider', 500000, 'ProsjektTransport',3),
+    ('na', 'Nora', 'Anneberg', '2018-09-18', 'Medarbeider', 800000,'ProsjektTransport',3),
+    ('rb', 'Ronny', 'Bengtson', '2015-03-25', 'Medarbeider', 900000,'ProsjektKontor',1),
+    ('bh', 'Benny', 'Henriksen', '2017-10-08', 'Medarbeider', 600000,'ProsjektRenhold',2),
+    ('ps', 'Pia', 'Sørensen', '2018-02-08', 'Medarbeider', 500000,'ProsjektTransport',3),
+    ('ee', 'Elise', 'Elingson', '2011-09-18', 'Medarbeider', 900000,'ProsjektLager',4),
+    ('ks', 'Kari', 'Solberg', '2019-04-10', 'Medarbeider', 700000,'ProsjektLager',4);
 
 
 

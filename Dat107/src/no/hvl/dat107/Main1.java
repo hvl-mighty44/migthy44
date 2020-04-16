@@ -5,8 +5,10 @@ public class Main1 {
 
     public static void main(String[] args) {
     
+ 	
     Meny Meny = new Meny();	
     	
+    Meny.oppstart();
 	Meny.start();
     
     

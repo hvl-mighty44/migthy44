@@ -172,5 +172,23 @@ public class Meny {
 		
 		leser.close();
 	}
+	
+	
+	public void oppstart() {
+		
+		AvdelingDAO AvdelingDAO = new AvdelingDAO();
+		AnsattDAO AnsattDAO = new AnsattDAO();
+		
+		
+		AvdelingDAO.oppdaterSjef(1, AnsattDAO.finnAnsattMedId(3));
+		AvdelingDAO.oppdaterSjef(2, AnsattDAO.finnAnsattMedId(1));
+		AvdelingDAO.oppdaterSjef(3, AnsattDAO.finnAnsattMedId(5));
+		AvdelingDAO.oppdaterSjef(4, AnsattDAO.finnAnsattMedId(10));
+		
+		
+		
+		
+		
+	}
 
 }// slutt
