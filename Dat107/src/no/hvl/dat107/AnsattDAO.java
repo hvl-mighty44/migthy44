@@ -42,6 +42,7 @@ public class AnsattDAO {
 
 		Ansatt p = null;
 
+		
 		try {
 			TypedQuery<Ansatt> query = em.createQuery("SELECT t FROM Ansatt t WHERE t.brukernavn LIKE :tekst", Ansatt.class);
 			query.setParameter("tekst", tekst);

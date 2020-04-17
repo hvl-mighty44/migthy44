@@ -31,6 +31,7 @@ public class AvdelingDAO {
 		}
 
 		return p;
+		
 	}
 
 	public void oppdaterSjef(int avdeling_id, Ansatt sjef) {

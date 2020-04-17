@@ -29,6 +29,7 @@ public class Meny {
 			System.out.println("Trykk [0] for å avslutte");
 			System.out.println(skille);
 			
+		
 			
 			svar = leser.nextInt();
 

@@ -34,6 +34,7 @@ public class Prosjekt {
 	    public void fjernProsjektdeltagelse(Prosjektdeltagelse prosjektdeltagelse) {
 	        deltagelser.remove(prosjektdeltagelse);
 	    }
+	    
 
 	    
 	    

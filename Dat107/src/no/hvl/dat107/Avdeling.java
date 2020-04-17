@@ -44,6 +44,7 @@ public class Avdeling {
 
 		}
 
+		
 	}
 
 	public int getAvdeling_id() {

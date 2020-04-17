@@ -41,7 +41,7 @@ public class Ansatt {
 	
 	@OneToMany(mappedBy="ansatt", fetch = FetchType.EAGER)
     private List<Prosjektdeltagelse> deltagelser;
-	
+
 	
 	public Ansatt() {}
 	
@@ -68,10 +68,19 @@ public class Ansatt {
 	public String toString() {
 		return "Ansatt [id=" + ansatt_id + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn=" + etternavn
 				+ ", ansettelse=" + ansettelse + ", stillling=" + stilling + ", lonn=" + lonn + ", avdeling="
-				+ avdeling + ", prosjekter=" + deltagelser + "]\n";
+				+ avdeling + ", prosjekter=" + "" + "]\n";
 	}
-
+//
+//	public void skrivUt(String innrykk) {
+//        System.out.printf("%sAnsatt nr %d: %s %s", innrykk, ansatt_id, fornavn, etternavn);
+//    }
 	
+	 public void skrivUtMedProsjekter() {
+	       // System.out.println();
+	       // skrivUt("");
+	        deltagelser.forEach(p -> p.skrivUt(""));
+		 
+	    }
 	
 	public String ansattTabellUtskrift() {
 
@@ -82,10 +91,13 @@ public class Ansatt {
 	
 	
 	public String fullAnsattUtskrift() {
+		
+	
+		
         return "Ansatt ID : " + this.getId() + "\n" +  "Fornavn : "
                 + this.getFornavn() + "\n" + "Etternavn : " + this.getEtternavn() + "\n" + "Ansettelses Tidspunkt : "
                 + this.getAnsettelse() + "\n" + "Stilling : " + this.getStillling() + "\n" + "Lønn : " + this.getLonn() + " Kr"
-                + "\n" + "Avdeling : " + this.getAvdeling().getAvdeling_navn() + "\n" + "Prosjekter : " + this.getDeltagelser() + "\n";
+                + "\n" + "Avdeling : " + this.getAvdeling().getAvdeling_navn() + "\n" + "Prosjekter : " + deltagelser.toString() + "\n";
 
     }
 	
@@ -158,13 +170,14 @@ public class Ansatt {
 		this.avdeling = avdeling;
 	}
 
-	public List<Prosjektdeltagelse> getDeltagelser() {
+	public List<Prosjektdeltagelse> getProsjekter() {
 		return deltagelser;
 	}
 
 	public void setProsjekter(List<Prosjektdeltagelse> deltagelser) {
 		this.deltagelser = deltagelser;
 	}
+
 	
 	
 	   public void leggTilProsjektdeltagelse(Prosjektdeltagelse prosjektdeltagelse) {
