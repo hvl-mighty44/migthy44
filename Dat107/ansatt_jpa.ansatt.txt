@@ -20,6 +20,14 @@ CREATE TABLE avdeling
     CONSTRAINT avdeling_pk PRIMARY KEY (avdeling_id)
 );
 
+CREATE TABLE Prosjekt
+(
+  prosjekt_id        SERIAL,
+  prosjekt_navn      VARCHAR(30),
+  beskrivelse		VARCHAR(30),
+  CONSTRAINT Prosjekt_PK PRIMARY KEY (prosjekt_id)
+);
+
 CREATE TABLE ansatt
 (
     ansatt_id SERIAL,
@@ -29,14 +37,29 @@ CREATE TABLE ansatt
     ansettelse DATE,
     stilling VARCHAR(30),
     lonn DECIMAL(10,2),
-    prosjekter VARCHAR(30),
+    prosjekt_id INTEGER,
     avdeling_id INTEGER NOT NULL,
     CONSTRAINT ansatt_pk PRIMARY KEY (ansatt_id),
     CONSTRAINT karUnique UNIQUE (brukernavn),
     CONSTRAINT AvdelingFK FOREIGN KEY (avdeling_id) 
-		REFERENCES avdeling(avdeling_id)
+		REFERENCES avdeling(avdeling_id),
+		CONSTRAINT ProsjektFK FOREIGN KEY (prosjekt_id) 
+		REFERENCES prosjekt(prosjekt_id)
 );
 
+
+CREATE TABLE Prosjektdeltagelse
+(
+  Prosjektdeltagelse_Id SERIAL,
+  ansatt_Id INTEGER,
+  prosjekt_Id INTEGER,
+  rolle VARCHAR(50),
+  timer     INTEGER,
+  CONSTRAINT Prosjektdeltagelse_PK PRIMARY KEY (prosjektdeltagelse_id),
+  CONSTRAINT AnsattProsjekt_Unik UNIQUE (ansatt_Id, prosjekt_id),
+  CONSTRAINT Ansatt_FK FOREIGN KEY (ansatt_id) REFERENCES Ansatt(ansatt_id),
+  CONSTRAINT Prosjekt_FK FOREIGN KEY (prosjekt_id) REFERENCES Prosjekt(prosjekt_id)  
+);
 
 INSERT INTO
   avdeling(avdeling_navn)
@@ -44,23 +67,41 @@ VALUES
     ('Kontor'), ('Renhold'), ('Transport'),('Lager');
 
 
+
+INSERT INTO
+  Prosjekt(prosjekt_navn,beskrivelse)
+VALUES
+  ('Trivselsprosjektet','Fokus på trivsel'),
+  ('Synergiprosjektet','Fokus på synergi'),
+  ('Utviklingsprosjektet','Fokus på utvikling');
+
+
+
 INSERT INTO
   ansatt(brukernavn, fornavn, etternavn, ansettelse,
-  stilling, lonn, prosjekter, avdeling_id)
+  stilling, lonn, prosjekt_id, avdeling_id)
 VALUES
-    ('fv', 'Fredrik', 'Valset', '2020-03-10', 'Medarbeider', 200000,'ProsjektRenhold',2), 
-    ('on', 'Ole', 'Nordmann', '2018-09-18', 'Medarbeider', 600000,'ProsjektTransport',3),
-    ('pb', 'Pål', 'Blomberg', '2020-09-28', 'Medarbeider', 900000,'ProsjektKontor',1),
-    ('nn', 'Nils', 'Nilson', '2018-09-18', 'Medarbeider', 500000, 'ProsjektTransport',3),
-    ('na', 'Nora', 'Anneberg', '2018-09-18', 'Medarbeider', 800000,'ProsjektTransport',3),
-    ('rb', 'Ronny', 'Bengtson', '2015-03-25', 'Medarbeider', 900000,'ProsjektKontor',1),
-    ('bh', 'Benny', 'Henriksen', '2017-10-08', 'Medarbeider', 600000,'ProsjektRenhold',2),
-    ('ps', 'Pia', 'Sørensen', '2018-02-08', 'Medarbeider', 500000,'ProsjektTransport',3),
-    ('ee', 'Elise', 'Elingson', '2011-09-18', 'Medarbeider', 900000,'ProsjektLager',4),
-    ('ks', 'Kari', 'Solberg', '2019-04-10', 'Medarbeider', 700000,'ProsjektLager',4);
+    ('fv', 'Fredrik', 'Valset', '2020-03-10', 'Medarbeider', 200000,1,2), 
+    ('on', 'Ole', 'Nordmann', '2018-09-18', 'Medarbeider', 600000,2,3),
+    ('pb', 'Pål', 'Blomberg', '2020-09-28', 'Medarbeider', 900000,3,1),
+    ('nn', 'Nils', 'Nilson', '2018-09-18', 'Medarbeider', 500000,1,3),
+    ('na', 'Nora', 'Anneberg', '2018-09-18', 'Medarbeider', 800000,2,3),
+    ('rb', 'Ronny', 'Bengtson', '2015-03-25', 'Medarbeider', 900000,3,1),
+    ('bh', 'Benny', 'Henriksen', '2017-10-08', 'Medarbeider', 600000,1,2),
+    ('ps', 'Pia', 'Sørensen', '2018-02-08', 'Medarbeider', 500000,2,3),
+    ('ee', 'Elise', 'Elingson', '2011-09-18', 'Medarbeider', 900000,3,4),
+    ('ks', 'Kari', 'Solberg', '2019-04-10', 'Medarbeider', 700000,1,4);
 
 
-
+INSERT INTO
+  Prosjektdeltagelse(ansatt_Id, prosjekt_id,timer)
+VALUES
+  (1, 1, 50),
+  (2, 1, 100),
+  (3, 2, 150),
+  (4, 1, 200),
+  (5, 2, 250),
+  (6, 1, 300);
 
 
 

@@ -8,6 +8,7 @@ public class Meny {
 
 	AvdelingDAO AvdelingDAO = new AvdelingDAO();
 	AnsattDAO AnsattDAO = new AnsattDAO();
+	ProsjektDAO ProsjektDAO = new ProsjektDAO();
 
 	Scanner leser = new Scanner(System.in);
 
@@ -120,12 +121,20 @@ public class Meny {
 					String stilling = leser.next() + leser.nextLine();
 					System.out.println("Skriv inn lønn");
 					int lonn = leser.nextInt();
-					System.out.println("Skriv inn prosjekt");
-					String prosjekt = leser.next() + leser.nextLine();
+					System.out.println("Skriv inn prosjekt id");
+					int prosjekt_id = leser.nextInt();
+					System.out.println("Skriv inndin rolle");
+					String rolle = leser.next() + leser.nextLine();
 					
-					//Stilling,lønn,prosjekt
+					// public Prosjektdeltagelse(Ansatt ansatt, Prosjekt prosjekt,String rolle, int timer) 
 					
-					Ansatt a = new Ansatt(brukernavn,fornavn,etternavn,LocalDate.now(),stilling, BigDecimal.valueOf(lonn), AvdelingDAO.finnAvdelingMedId(avdeling),prosjekt);
+					
+					
+					
+					Ansatt a = new Ansatt(brukernavn,fornavn,etternavn,LocalDate.now(),stilling, BigDecimal.valueOf(lonn), AvdelingDAO.finnAvdelingMedId(avdeling));
+					
+					Prosjektdeltagelse Prosjektdeltagelse = new Prosjektdeltagelse(a,ProsjektDAO.finnProsjektMedId(prosjekt_id),rolle,0);
+					
 					
 					AnsattDAO.leggTilAnsatt(a);
 					

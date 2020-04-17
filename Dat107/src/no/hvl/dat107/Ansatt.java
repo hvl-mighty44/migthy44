@@ -1,16 +1,21 @@
 package no.hvl.dat107;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
+import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 
 
@@ -32,7 +37,11 @@ public class Ansatt {
 	@JoinColumn(name = "avdeling_id", referencedColumnName = "avdeling_id")
 	private Avdeling avdeling;
 	
-	private String prosjekter; //Liste?
+	//private String prosjekter; //Liste?
+	
+	@OneToMany(mappedBy="ansatt", fetch = FetchType.EAGER)
+    private List<Prosjektdeltagelse> deltagelser;
+	
 	
 	public Ansatt() {}
 	
@@ -44,7 +53,7 @@ public class Ansatt {
 		this.avdeling = avdeling;
 	}
 	
-	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansettelse, String stillling, BigDecimal lonn, Avdeling avdeling, String prosjekter) {
+	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansettelse, String stillling, BigDecimal lonn, Avdeling avdeling) {
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
@@ -52,14 +61,14 @@ public class Ansatt {
 		this.stilling = stillling;
 		this.lonn = lonn;
 		this.avdeling = avdeling;
-		this.prosjekter = prosjekter;
+		this.deltagelser = null;
 	}
 
 	@Override
 	public String toString() {
 		return "Ansatt [id=" + ansatt_id + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn=" + etternavn
 				+ ", ansettelse=" + ansettelse + ", stillling=" + stilling + ", lonn=" + lonn + ", avdeling="
-				+ avdeling + ", prosjekter=" + prosjekter + "]\n";
+				+ avdeling + ", prosjekter=" + deltagelser + "]\n";
 	}
 
 	
@@ -76,7 +85,7 @@ public class Ansatt {
         return "Ansatt ID : " + this.getId() + "\n" +  "Fornavn : "
                 + this.getFornavn() + "\n" + "Etternavn : " + this.getEtternavn() + "\n" + "Ansettelses Tidspunkt : "
                 + this.getAnsettelse() + "\n" + "Stilling : " + this.getStillling() + "\n" + "Lønn : " + this.getLonn() + " Kr"
-                + "\n" + "Avdeling : " + this.getAvdeling().getAvdeling_navn() + "\n" + "Prosjekter : " + this.getProsjekter() + "\n";
+                + "\n" + "Avdeling : " + this.getAvdeling().getAvdeling_navn() + "\n" + "Prosjekter : " + this.getDeltagelser() + "\n";
 
     }
 	
@@ -149,16 +158,22 @@ public class Ansatt {
 		this.avdeling = avdeling;
 	}
 
-	public String getProsjekter() {
-		return prosjekter;
+	public List<Prosjektdeltagelse> getDeltagelser() {
+		return deltagelser;
 	}
 
-	public void setProsjekter(String prosjekter) {
-		this.prosjekter = prosjekter;
+	public void setProsjekter(List<Prosjektdeltagelse> deltagelser) {
+		this.deltagelser = deltagelser;
 	}
 	
 	
-	
+	   public void leggTilProsjektdeltagelse(Prosjektdeltagelse prosjektdeltagelse) {
+	        deltagelser.add(prosjektdeltagelse);
+	    }
+
+	    public void fjernProsjektdeltagelse(Prosjektdeltagelse prosjektdeltagelse) {
+	        deltagelser.remove(prosjektdeltagelse);
+	    }
 	
 	
 }
