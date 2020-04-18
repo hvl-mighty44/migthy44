@@ -9,6 +9,7 @@ public class Meny {
 	AvdelingDAO AvdelingDAO = new AvdelingDAO();
 	AnsattDAO AnsattDAO = new AnsattDAO();
 	ProsjektDAO ProsjektDAO = new ProsjektDAO();
+	ProsjektdeltagelseDAO ProsjektdeltagelseDAO = new ProsjektdeltagelseDAO();
 
 	Scanner leser = new Scanner(System.in);
 
@@ -19,18 +20,22 @@ public class Meny {
 		int status = 0;
 		while (status == 0) {
 			System.out.println(skille);
-			System.out.println("Trykk [1] for å søke etter ansatt");
-			System.out.println("Trykk [2] for å skrive ut alle ansatte");
-			System.out.println("Trykk [3] for å oppdatere en ansatt");
-			System.out.println("Trykk [4] for å bytte avdeling");
-			System.out.println("Trykk [5] for å legge til en ansatt");
-			System.out.println("Trykk [6] for å søke etter en avdeling");
-			System.out.println("Trykk [7] for å legge inn en ny avdeling");
-			System.out.println("Trykk [0] for å avslutte");
+			System.out.println("Trykk [1]  for å søke etter ansatt");
+			System.out.println("Trykk [2]  for å skrive ut alle ansatte");
+			System.out.println("Trykk [3]  for å oppdatere en ansatt");
+			System.out.println("Trykk [4]  for å bytte avdeling");
+			System.out.println("Trykk [5]  for å legge til en ansatt");
+			System.out.println("Trykk [6]  for å søke etter en avdeling");
+			System.out.println("Trykk [7]  for å legge inn en ny avdeling");
+			System.out.println("Trykk [8]  for å legge inn en ett nytt prosjekt");
+			System.out.println("Trykk [9]  for å registrere prosjektdeltagelse");
+			System.out.println("Trykk [10] for å føre timer for en ansatt på et prosjekt");
+			System.out.println("Trykk [11] for å skrive ut et prosjekt");
+			System.out.println("Trykk [0]  for å avslutte");
 			System.out.println(skille);
 			
 		
-			
+	
 			svar = leser.nextInt();
 
 			
@@ -174,6 +179,47 @@ public class Meny {
 					
 					AvdelingDAO.leggeTilNyAvdeling(avd7, AnsattDAO.finnAnsattMedId(id7));
 					System.out.println("Oppdatert");
+					
+				} else if(svar == 8) {
+					
+					System.out.println("Skriv inn prosjekt navn");
+					String id8 = leser.next() + leser.nextLine();
+					System.out.println("Skriv inn beskrivelse av prosjektet");
+					String avd8 = leser.next() + leser.nextLine();
+					
+					ProsjektDAO.leggeTilNyttProsjekt(id8, avd8);
+					System.out.println("Oppdatert");
+					
+				} else if(svar == 9) {
+					
+					
+					
+					System.out.println("Skriv inn ansatt id");
+					int a_id9 = leser.nextInt();
+					System.out.println("Skriv inn prosjekt id");
+					int p_id9 = leser.nextInt();
+					System.out.println("Skriv inn rolle i prosjektet");
+					String rol = leser.next() + leser.nextLine();
+					
+					ProsjektdeltagelseDAO.leggeTilNyProsjektdeltagelse(a_id9, p_id9, rol);
+					
+					System.out.println("Oppdatert");
+				} else if(svar == 10) {
+					
+					System.out.println("Skriv inn prosjektdeltagelse id");
+					int id10 = leser.nextInt();
+					System.out.println("Skriv inn antall timer");
+					int timer10 = leser.nextInt();
+					
+					ProsjektdeltagelseDAO.leggeTilTimerMedProsjektdeltagelseId(id10, timer10);
+					System.out.println("Oppdatert");
+					
+				} else if(svar == 11) {
+					
+					System.out.println("skriv inn prosjekt id");
+					int id11 = leser.nextInt();
+					
+					ProsjektDAO.skrivUtProsjekt(id11);
 					
 				}
 				 

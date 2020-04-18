@@ -12,6 +12,7 @@ import javax.persistence.TypedQuery;
 public class AvdelingDAO {
 
 	private EntityManagerFactory emf;
+	
 
 	public AvdelingDAO() {
 		emf = Persistence.createEntityManagerFactory("AnsattPersistenceUnit");

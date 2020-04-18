@@ -99,6 +99,7 @@ public class Ansatt {
                 + this.getAnsettelse() + "\n" + "Stilling : " + this.getStillling() + "\n" + "Lønn : " + this.getLonn() + " Kr"
                 + "\n" + "Avdeling : " + this.getAvdeling().getAvdeling_navn() + "\n" + "Prosjekter : " + deltagelser.toString() + "\n";
 
+        
     }
 	
 	

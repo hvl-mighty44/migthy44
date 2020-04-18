@@ -56,6 +56,10 @@ public Prosjektdeltagelse() {}
 	public String prosjektInfo() {
 		return "Prosjektnavn: " + prosjekt.getProsjekt_navn() + " Antall timer: " + timer;
 	}
+	
+	public String deltagere() {
+		return "Ansatt id: " + ansatt.getId() +", Navn: " + ansatt.getFulltNavn() + ", Rolle: " + this.getRolle() + ", Timer: " + this.getTimer() +  " ";
+	}
     
     public void skrivUt(String innrykk) {
         System.out.printf("%sDeltagelse: %s, %d timer", innrykk, 
@@ -85,7 +89,7 @@ public Prosjektdeltagelse() {}
 	}
 
 	public void setTimer(int timer) {
-		this.timer = timer;
+		this.timer = this.timer + timer;
 	}
 
 	public Ansatt getAnsatt() {
@@ -104,7 +108,7 @@ public Prosjektdeltagelse() {}
 		this.prosjekt = prosjekt;
 	}
    
-    
+
     
     
 }

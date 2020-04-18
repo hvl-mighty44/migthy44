@@ -1,7 +1,6 @@
 package no.hvl.dat107;
 
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,11 +36,18 @@ public class Prosjekt {
 	    
 
 	    
-	    
 	    public Prosjekt() {};
 	    
+	    public Prosjekt(String prosjekt_navn, String beskrivelse) {
+	 
+	    	this.prosjekt_navn = prosjekt_navn;
+			this.beskrivelse = beskrivelse;
+			this.deltagelser = null;
+	    	
+	    }
+	    
 		public Prosjekt(String prosjekt_navn, String beskrivelse, List<Prosjektdeltagelse> deltagelser) {
-			super();
+			
 			this.prosjekt_navn = prosjekt_navn;
 			this.beskrivelse = beskrivelse;
 			this.deltagelser = deltagelser;
@@ -71,13 +77,21 @@ public class Prosjekt {
 			this.deltagelser = deltagelser;
 		}
 
+//		@Override
+//		public String toString() {
+//			return "Prosjekt [prosjekt_id=" + prosjekt_id + ", prosjekt_navn=" + prosjekt_navn + ", beskrivelse="
+//					+ beskrivelse + ", deltagelser=" + deltagelser + "]";
+//		}
+		
+		
+	
 		@Override
 		public String toString() {
-			return "Prosjekt [prosjekt_id=" + prosjekt_id + ", prosjekt_navn=" + prosjekt_navn + ", beskrivelse="
-					+ beskrivelse + ", deltagelser=" + deltagelser + "]";
+			return "Prosjekt navn: " + prosjekt_navn + "\n" +
+		"Prosjekt id: " + prosjekt_id +"\n" + "Prosjekt beskrivelse: " + beskrivelse +"\n" + "Deltagere: " + deltagelser + "\n";
 		}
-	
 		
 		
+		//Riktig
 	
 }//Slutt klasse
