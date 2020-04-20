@@ -221,6 +221,8 @@ public class Meny {
 					
 					ProsjektDAO.skrivUtProsjekt(id11);
 					
+					
+					
 				}
 				 
 		} 

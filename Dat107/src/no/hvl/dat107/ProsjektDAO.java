@@ -63,7 +63,23 @@ public class ProsjektDAO {
 	    	
 	    	
 	    	System.out.println(finnProsjektMedId(prosjekt_id));
+	    	Prosjekt prosjekt = finnProsjektMedId(prosjekt_id);
+	    	List<Prosjektdeltagelse> list = prosjekt.getDeltagelser();
+	    	Iterator<Prosjektdeltagelse> iterator = list.iterator();
 	    	
+	    	
+	    	while(iterator.hasNext()) {
+	    		System.out.println(iterator.next().deltagere());
+	    	}
+	    	Iterator<Prosjektdeltagelse> iteratorTimer = list.iterator();
+	    	
+	    	int totalTimer = 0;
+	    	while(iteratorTimer.hasNext()) {
+	    		totalTimer += iteratorTimer.next().getTimer();
+	    	}
+	    	
+	    	
+	    	System.out.println("Total timer: " + totalTimer);
 	    }
 		
 	

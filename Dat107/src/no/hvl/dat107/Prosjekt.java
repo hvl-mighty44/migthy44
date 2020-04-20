@@ -84,11 +84,14 @@ public class Prosjekt {
 //		}
 		
 		
+		
+		
+		
 	
 		@Override
 		public String toString() {
 			return "Prosjekt navn: " + prosjekt_navn + "\n" +
-		"Prosjekt id: " + prosjekt_id +"\n" + "Prosjekt beskrivelse: " + beskrivelse +"\n" + "Deltagere: " + deltagelser + "\n";
+		"Prosjekt id: " + prosjekt_id +"\n" + "Prosjekt beskrivelse: " + beskrivelse +"\n\n" + "Deltagere: ";
 		}
 		
 		

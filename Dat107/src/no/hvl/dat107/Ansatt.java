@@ -3,6 +3,7 @@ package no.hvl.dat107;
 import java.math.BigDecimal;
 
 import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -70,14 +71,10 @@ public class Ansatt {
 				+ ", ansettelse=" + ansettelse + ", stillling=" + stilling + ", lonn=" + lonn + ", avdeling="
 				+ avdeling + ", prosjekter=" + "" + "]\n";
 	}
-//
-//	public void skrivUt(String innrykk) {
-//        System.out.printf("%sAnsatt nr %d: %s %s", innrykk, ansatt_id, fornavn, etternavn);
-//    }
+
 	
 	 public void skrivUtMedProsjekter() {
-	       // System.out.println();
-	       // skrivUt("");
+	       
 	        deltagelser.forEach(p -> p.skrivUt(""));
 		 
 	    }
@@ -101,6 +98,24 @@ public class Ansatt {
 
         
     }
+	
+	
+	
+	   public void skrivUtDeltagelser() {
+	    	
+	  		
+		    
+	    	
+				Iterator<Prosjektdeltagelse> iterator = deltagelser.iterator();
+				
+				while (iterator.hasNext()) {
+					System.out.println(iterator.next().deltagere());
+	
+					}
+			
+	  
+	    }
+	
 	
 	
 	public Integer getId() {
