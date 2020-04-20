@@ -94,14 +94,14 @@ VALUES
 
 
 INSERT INTO
-  Prosjektdeltagelse(ansatt_Id, prosjekt_id,timer)
+  Prosjektdeltagelse(ansatt_Id, prosjekt_id,timer, rolle)
 VALUES
-  (1, 1, 50),
-  (2, 1, 100),
-  (3, 2, 150),
-  (4, 1, 200),
-  (5, 2, 250),
-  (6, 1, 300);
+  (1, 1, 50, 'Motivator'),
+  (2, 1, 100, 'Konsulent'),
+  (3, 2, 150, 'Team-lead'),
+  (4, 1, 200, 'Design'),
+  (5, 2, 250, 'Motivator'),
+  (6, 1, 300, 'Team-lead');
 
 
 
